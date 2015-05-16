@@ -17,7 +17,7 @@ xmlhttp.onreadystatechange=function(){
     }
 }
 var pLoad=JSON.stringify(payload);
-xmlhttp.open("POST",'https://script.google.com/macros/s/AKfycbzZ-2K0zQJM8BOi1vgckZyxD5nOznBPcE-FUJioaTuGJKKwjog/exec?mode=init&payload={}';//+mode+'&payload='+pLoad,true);
+xmlhttp.open("POST",'https://script.google.com/macros/s/AKfycbzZ-2K0zQJM8BOi1vgckZyxD5nOznBPcE-FUJioaTuGJKKwjog/exec?mode=init&payload={}',true);//+mode+'&payload='+pLoad,true);
 xmlhttp.send();
 }
 catch(err){
