@@ -46,7 +46,8 @@ xmlhttp.onreadystatechange=function(){
       doProcess(mode,xmlhttp.responseText);
     }
 }
-var pLoad=JSON.stringify(payload);
+var plStr=JSON.stringify(payload);
+var pLoad=plStr.replace(/&/g,'#amp;#');
 xmlhttp.open("POST",'https://script.google.com/macros/s/AKfycbzZ-2K0zQJM8BOi1vgckZyxD5nOznBPcE-FUJioaTuGJKKwjog/exec?mode='+mode+'&payload='+pLoad,true);
 xmlhttp.send();
 }
