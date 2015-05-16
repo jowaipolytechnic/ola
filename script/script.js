@@ -1,5 +1,6 @@
 //--------------AJAX call
 function xhr(mode,payload){
+try{
 var xmlhttp;
 if (window.XMLHttpRequest)
   {// code for IE7+, Firefox, Chrome, Opera, Safari
@@ -19,6 +20,10 @@ xmlhttp.onreadystatechange=function(){
 var pLoad=JSON.stringify(payload);
 xmlhttp.open("POST",'https://script.google.com/macros/s/AKfycbzZ-2K0zQJM8BOi1vgckZyxD5nOznBPcE-FUJioaTuGJKKwjog/exec?mode='+mode+'&payload='+pLoad,true);
 xmlhttp.send();
+}
+catch(err){
+	alert('No AJAZ Support');
+}
 }
 //----------------------------------------------------------------------------
 function doProcess(mode,data){
