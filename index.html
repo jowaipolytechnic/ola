@@ -61,7 +61,14 @@ function win_onkeydown_handler() {
       return false;
   }
 }
-
+  try{
+    var obj={'name':'OLA','by':'JOP'};
+    var objStr=JSON.stringify(obj);
+    alert('JSON Supported!');
+  }
+  catch(err){
+    alert('No JSON Support');
+  }
   xhr('init',{'para':''});
 </script>
 </body>
