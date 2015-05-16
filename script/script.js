@@ -5,11 +5,41 @@ if (window.XMLHttpRequest)
   {// code for IE7+, Firefox, Chrome, Opera, Safari
   xmlhttp=new XMLHttpRequest();
   }
-else if(window.ActiveXObject)
+else
   {// code for IE6, IE5
-  xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+  try{
+  	xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
   }
-else{alert('Cannot proceed as your browser does not support xmlHTTP request');}
+  catch(e){
+  	try{
+  		xmlhttp=new ActiveXObject("Msxml3.XMLHTTP");
+  	}
+  	catch(e){
+  		try{
+  			xmlhttp=new ActiveXObject(""Msxml2.XMLHTTP.6.0");
+  		}
+  		catch(e){
+  			try{
+  				xmlhttp=new ActiveXObject("Msxml2.XMLHTTP.3.0");
+  			}
+  			catch(e){
+  				try{
+  					xmlhttp=new ActiveXObject("Msxml2.XMLHTTP");
+  				}
+  				catch(e){
+  					try{
+  						xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+  					}
+  					catch(e){
+  						alert('Cannot proceed as your browser does not support xmlHTTP request');
+  					}
+  					
+  				}
+  			}
+  		}
+  	}
+  }
+  }
 xmlhttp.onreadystatechange=function(){
   if (xmlhttp.readyState==4 && xmlhttp.status==200)
     {
