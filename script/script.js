@@ -16,7 +16,7 @@ else
   	}
   	catch(e){
   		try{
-  			xmlhttp=new ActiveXObject(""Msxml2.XMLHTTP.6.0");
+  			xmlhttp=new ActiveXObject("Msxml2.XMLHTTP.6.0");
   		}
   		catch(e){
   			try{
