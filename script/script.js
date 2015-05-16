@@ -13,11 +13,11 @@ else
 xmlhttp.onreadystatechange=function(){
   if (xmlhttp.readyState==4 && xmlhttp.status==200)
     {
-      //document.getElementById("myDiv").innerHTML=xmlhttp.responseText;
       doProcess(mode,xmlhttp.responseText);
     }
 }
-var pLoad='null';//JSON.stringify(payload);
+var mode='init';
+var pLoad='x';//JSON.stringify(payload);
 xmlhttp.open("POST",'https://script.google.com/macros/s/AKfycbzZ-2K0zQJM8BOi1vgckZyxD5nOznBPcE-FUJioaTuGJKKwjog/exec?mode='+mode+'&payload='+pLoad,true);
 xmlhttp.send();
 }
@@ -27,7 +27,6 @@ catch(err){
 }
 //----------------------------------------------------------------------------
 function doProcess(mode,data){
-  alert('Data Returned');
   var returnPayload=JSON.parse(data);
   if(returnPayload.action=='showHtml'){
     getE('container').innerHTML=returnPayload.html;
