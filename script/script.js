@@ -20,7 +20,6 @@ xmlhttp.onreadystatechange=function(){
 var pLoad=JSON.stringify(payload);
 xmlhttp.open("POST",'https://script.google.com/macros/s/AKfycbzZ-2K0zQJM8BOi1vgckZyxD5nOznBPcE-FUJioaTuGJKKwjog/exec?mode='+mode+'&payload='+pLoad,true);
 xmlhttp.send();
-alert('xmlHttp Request Supported');
 }
 catch(err){
 	alert('Cannot continue since your browser does not support XML HTTP request.');
@@ -28,6 +27,7 @@ catch(err){
 }
 //----------------------------------------------------------------------------
 function doProcess(mode,data){
+  alert('Data Returned');
   var returnPayload=JSON.parse(data);
   if(returnPayload.action=='showHtml'){
     getE('container').innerHTML=returnPayload.html;
