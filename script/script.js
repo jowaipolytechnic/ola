@@ -1,15 +1,15 @@
 //--------------AJAX call
 function xhr(mode,payload){
-try{
 var xmlhttp;
 if (window.XMLHttpRequest)
   {// code for IE7+, Firefox, Chrome, Opera, Safari
   xmlhttp=new XMLHttpRequest();
   }
-else
+else if(window.ActiveXObject)
   {// code for IE6, IE5
   xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
   }
+else{alert('Cannot proceed as your browser does not support xmlHTTP request');}
 xmlhttp.onreadystatechange=function(){
   if (xmlhttp.readyState==4 && xmlhttp.status==200)
     {
@@ -17,12 +17,8 @@ xmlhttp.onreadystatechange=function(){
     }
 }
 var pLoad=JSON.stringify(payload);
-xmlhttp.open("POST",'https://script.google.com/macros/s/AKfycbzZ-2K0zQJM8BOi1vgckZyxD5nOznBPcE-FUJioaTuGJKKwjog/exec?mode=init&payload={}',true);//+mode+'&payload='+pLoad,true);
+xmlhttp.open("POST",'https://script.google.com/macros/s/AKfycbzZ-2K0zQJM8BOi1vgckZyxD5nOznBPcE-FUJioaTuGJKKwjog/exec?mode='+mode+'&payload='+pLoad,true);
 xmlhttp.send();
-}
-catch(err){
-	alert('Cannot continue since your browser does not support XML HTTP request.');
-}
 }
 //----------------------------------------------------------------------------
 function doProcess(mode,data){
