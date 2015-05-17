@@ -6,7 +6,7 @@ if (window.XMLHttpRequest)
   xmlhttp=new XMLHttpRequest();
   }
 else
-  {// code for IE6, IE5
+  {
   try{
   	xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
   }
@@ -31,7 +31,7 @@ else
   						xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
   					}
   					catch(e){
-  						alert('Cannot proceed as your browser does not support xmlHTTP request');
+  						alert('Cannot proceed. Your browser does not support xmlHTTP request');
   					}
   					
   				}
@@ -43,16 +43,19 @@ else
 xmlhttp.onreadystatechange=function(){
   if (xmlhttp.readyState==4 && xmlhttp.status==200)
     {
-      doProcess(mode,xmlhttp.responseText);
+      doProcess(xmlhttp.responseText);
     }
 }
-var plStr=JSON.stringify(payload);
-var pLoad=plStr.replace(/&/g,'#amp;#');
+var jsn={};
+for(key in payload){
+	jsn[key]=payload[key].replace(/&/g,'#amp;#');
+}
+var pLoad=JSON.stringify(jsn);
 xmlhttp.open("POST",'https://script.google.com/macros/s/AKfycbzZ-2K0zQJM8BOi1vgckZyxD5nOznBPcE-FUJioaTuGJKKwjog/exec?mode='+mode+'&payload='+pLoad,true);
 xmlhttp.send();
 }
 //----------------------------------------------------------------------------
-function doProcess(mode,data){
+function doProcess(data){
   var returnPayload=JSON.parse(data);
   if(returnPayload.action=='showHtml'){
     getE('container').innerHTML=returnPayload.html;
