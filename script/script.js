@@ -48,7 +48,7 @@ xmlhttp.onreadystatechange=function(){
 }
 var jsn={};
 for(key in payload){
-	jsn[key]=payload[key].replace(/&/g,'#amp;#');
+	jsn[key]=payload[key].toString().replace(/&/g,'#amp;#');
 }
 var pLoad=JSON.stringify(jsn);
 xmlhttp.open("POST",'https://script.google.com/macros/s/AKfycbzZ-2K0zQJM8BOi1vgckZyxD5nOznBPcE-FUJioaTuGJKKwjog/exec?mode='+mode+'&payload='+pLoad,true);
