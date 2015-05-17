@@ -57,11 +57,14 @@ for(key in payload){
 		}
 	}
 }*/
-var pLoad=JSON.stringify(payload).replace(/&/g,'#amp;#');
+var pLoad=JSON.stringify(payload).replace(/&/g,'#amp;#'));
 xmlhttp.open("POST",'https://script.google.com/macros/s/AKfycbzZ-2K0zQJM8BOi1vgckZyxD5nOznBPcE-FUJioaTuGJKKwjog/exec?mode='+mode+'&payload='+pLoad,true);
 xmlhttp.send();
 }
 //----------------------------------------------------------------------------
+function replacer(key,value){
+	return value.replace(/&/g,'#amp;#');
+}
 function doProcess(data){
   var returnPayload=JSON.parse(data);
   if(returnPayload.action=='showHtml'){
