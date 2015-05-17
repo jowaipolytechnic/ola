@@ -48,6 +48,7 @@ xmlhttp.onreadystatechange=function(){
 }
 var jsn={};
 for(key in payload){
+	alert(typeof payload[key]);
 	jsn[key]=payload[key].toString().replace(/&/g,'#amp;#');
 }
 var pLoad=JSON.stringify(jsn);
