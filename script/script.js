@@ -55,7 +55,7 @@ for(var key in payload){
 		for(var index=0;index<payload[key].length;index++){
 			jsn[key]=[];
 			for(var subkey in payload[key][index])
-			jsn[key].push(payload[key][index][subkey].replace(/&/g,'#amp;#');
+			jsn[key].push(payload[key][index][subkey].replace(/&/g,'#amp;#'));
 		}
 	}
 }
