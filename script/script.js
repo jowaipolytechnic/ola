@@ -49,7 +49,7 @@ xmlhttp.onreadystatechange=function(){
 var jsn={};
 for(var key in payload){
 	if(typeof payload[key]=='string'){
-	jsn[key]=payload[key].replace(/&/g,c);
+	jsn[key]=payload[key].replace(/&/g,'#amp;#');
 	}
 	else if(typeof payload[key]=='array'){
 		for(var index=0;index<payload[key].length;index++){
