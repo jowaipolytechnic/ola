@@ -46,18 +46,18 @@ xmlhttp.onreadystatechange=function(){
       doProcess(xmlhttp.responseText);
     }
 }
-var jsn={};
+/*var jsn={};
 for(key in payload){
 	if(typeof payload[key]=='string'){
-	jsn[key]=payload[key].toString().replace(/&/g,'#amp;#');
+	jsn[key]=payload[key].toString().replace(/&/g,c);
 	}
 	else if(typeof payload[key]=='object'){
 		for(subkey in payload[key]){
 			jsn[key.toString()][subkey.toString()]=payload[key.toString()][subkey.toString()].toString().replace(/&/g,'#amp;#');
 		}
 	}
-}
-var pLoad=JSON.stringify(jsn);
+}*/
+var pLoad=JSON.stringify(payload).replace(/&/g,.toString());
 xmlhttp.open("POST",'https://script.google.com/macros/s/AKfycbzZ-2K0zQJM8BOi1vgckZyxD5nOznBPcE-FUJioaTuGJKKwjog/exec?mode='+mode+'&payload='+pLoad,true);
 xmlhttp.send();
 }
