@@ -63,7 +63,7 @@ xmlhttp.send();
 }
 //----------------------------------------------------------------------------
 function replacer(key,value){
-	return value.replace(/&/g,'#amp;#');
+	return value.toString().replace(/&/g,'#amp;#');
 }
 function doProcess(data){
   var returnPayload=JSON.parse(data);
