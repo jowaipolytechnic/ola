@@ -53,7 +53,7 @@ for(key in payload){
 	}
 	else{
 		for(subkey in payload[key]){
-			jsn[key][subkey]vpayload[key][subkey].toString().replace(/&/g,'#amp;#');
+			jsn[key][subkey]=payload[key][subkey].toString().replace(/&/g,'#amp;#');
 		}
 	}
 }
