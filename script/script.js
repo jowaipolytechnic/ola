@@ -46,18 +46,20 @@ xmlhttp.onreadystatechange=function(){
       doProcess(xmlhttp.responseText);
     }
 }
-/*var jsn={};
-for(key in payload){
+var jsn={};
+for(var key in payload){
 	if(typeof payload[key]=='string'){
-	jsn[key]=payload[key].toString().replace(/&/g,c);
+	jsn[key]=payload[key].replace(/&/g,c);
 	}
-	else if(typeof payload[key]=='object'){
-		for(subkey in payload[key]){
-			jsn[key.toString()][subkey.toString()]=payload[key.toString()][subkey.toString()].toString().replace(/&/g,'#amp;#');
+	else if(typeof payload[key]=='array'){
+		for(var index=0;index<payload[key].length;index++){
+			jsn[key]=[];
+			for(var subkey in payload[key][index])
+			jsn[key].push(payload[key][index][subkey].replace(/&/g,'#amp;#');
 		}
 	}
-}*/
-var pLoad=JSON.stringify(payload,replacer);
+}
+var pLoad=JSON.stringify(payload);
 xmlhttp.open("POST",'https://script.google.com/macros/s/AKfycbzZ-2K0zQJM8BOi1vgckZyxD5nOznBPcE-FUJioaTuGJKKwjog/exec?mode='+mode+'&payload='+pLoad,true);
 xmlhttp.send();
 }
