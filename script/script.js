@@ -56,7 +56,7 @@ function formJSON(obj){
 	var jsn={};
 	for(var key in obj){
 		if(typeof obj[key]==='string'){
-			jsn[key]=obj[key].replace(/&/g,'ampersandChar');
+			jsn[key]=obj[key].replace(/&/g,'ampersandChar').replace(/#/g,'hashChar').replace(/%/g,'percentageChar');
 		}
 		else if(typeof obj[key]==='object'){
 			if(obj[key].constructor===Array){
