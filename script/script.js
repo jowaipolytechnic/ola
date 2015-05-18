@@ -46,16 +46,12 @@ xmlhttp.onreadystatechange=function(){
       doProcess(xmlhttp.responseText);
     }
 }
-//var jsn=formJSON(payload);
-var pLoad=JSON.stringify(payload,replacer);
+var jsn=formJSON(payload);
+var pLoad=JSON.stringify(jsn);
 xmlhttp.open("POST",'https://script.google.com/macros/s/AKfycbzZ-2K0zQJM8BOi1vgckZyxD5nOznBPcE-FUJioaTuGJKKwjog/exec?mode='+mode+'&payload='+pLoad,true);
 xmlhttp.send();
 }
 //----------------------------------------------------------------------------
-function replacer(key,value){
-	if(typeof value==='string'){return value.replace(/&/g,'##amp##');}
-	else{return value;}
-}
 function formJSON(obj){
 	var jsn={};
 	for(var key in obj){
