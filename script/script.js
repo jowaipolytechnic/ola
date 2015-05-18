@@ -46,29 +46,35 @@ xmlhttp.onreadystatechange=function(){
       doProcess(xmlhttp.responseText);
     }
 }
-var jsn={};
-for(var key in payload){
-	if(typeof payload[key]=='string'){
-	jsn[key]=payload[key].replace(/&/g,'#amp;#');
-	}
-	else if(typeof payload[key]=='array'){
-		for(var index=0;index<payload[key].length;index++){
-			jsn[key]=[];
-			for(var subkey in payload[key][index])
-			jsn[key].push(payload[key][index][subkey].replace(/&/g,'#amp;#'));
-		}
-	}
-}
-var pLoad=JSON.stringify(payload);
+var jsn=formJSON(payload);
+var pLoad=JSON.stringify(jsn);
 xmlhttp.open("POST",'https://script.google.com/macros/s/AKfycbzZ-2K0zQJM8BOi1vgckZyxD5nOznBPcE-FUJioaTuGJKKwjog/exec?mode='+mode+'&payload='+pLoad,true);
 xmlhttp.send();
 }
 //----------------------------------------------------------------------------
-function replacer(key,value){
-	if(typeof value==='string'){
-		return value.replace(/&/g,'#amp;#');
+function formJSON(obj){
+	var jsn={};
+	for(var key in obj){
+		if(typeof obj[key]==='string'){
+			jsn[key]=obj[key].replace(/&/g,'##amp##');
+		}
+		else if(typeof obj[key]==='object'){
+			if(obj[key].constructor===Array){
+				var arr=[];
+				for(var i=0;i<obj[key].length;i++){
+					var o=formJSON(obj[key][i]);
+					arr.push(o);
+				}
+				jsn[key]=arr;
+			}
+			else{
+				var o=formJSON(obj[key]);
+				jsn[key]=o;
+			}
+		}
+		else{jsn[key]=obj[key];}
 	}
-	return value;
+	return jsn;
 }
 function doProcess(data){
   var returnPayload=JSON.parse(data);
@@ -265,7 +271,7 @@ function getFilledData(){
   data.sex=getE('selSex').value;data.dobDay=getE('selDay').value;data.dobMonth=getE('selMonth').value;data.dobYear=getE('selYear').value;
   data.nationality=getE('tbNationality').value;data.religion=getE('tbReligion').value;data.motherTongue=getE('tbMotherTongue').value;
   data.category=getE('selCategory').value;
-  if(data.category=='K&J'){data.category='KnJ';}
+  //if(data.category=='K&J'){data.category='KnJ';}
   //--------------Communication Details-------------------------------------
   data.permanentAddress=getE('txPermanentAddress').value;data.communicationAddress=getE('txCommunicationAddress').value;
   data.phone=getE('tbPhoneNumber').value;data.mobile=getE('tbMobileNumber').value;
