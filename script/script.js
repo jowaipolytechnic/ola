@@ -51,7 +51,7 @@ var pLoad=JSON.stringify(jsn);
 xmlhttp.open("POST",'https://script.google.com/macros/s/AKfycbzZ-2K0zQJM8BOi1vgckZyxD5nOznBPcE-FUJioaTuGJKKwjog/exec?mode='+mode+'&payload='+pLoad,true);
 xmlhttp.send();
 // Timeout to abort in 5 seconds
-var xmlHttpTimeout=setTimeout(ajaxTimeout,1000);
+var xmlHttpTimeout=setTimeout(ajaxTimeout,30000);
 function ajaxTimeout(){
    xmlhttp.abort();
    closeLoadBar();
