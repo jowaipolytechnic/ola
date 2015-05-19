@@ -53,7 +53,7 @@ xmlhttp.send();
 // Timeout to abort in 5 seconds
 var xmlHttpTimeout=setTimeout(ajaxTimeout,1000);
 function ajaxTimeout(){
-   xmlHttp.abort();
+   xmlhttp.abort();
    closeLoadBar();
    alert("Request timed out.<p>Please try again.");
 }
