@@ -53,7 +53,7 @@ function xhr(mode,payload){
 		xmlhttp.open("POST",'https://script.google.com/macros/s/AKfycbzZ-2K0zQJM8BOi1vgckZyxD5nOznBPcE-FUJioaTuGJKKwjog/exec?mode='+mode+'&payload='+pLoad,true);
 		xmlhttp.send();
 		// Timeout to abort in 5 seconds
-		var xmlHttpTimeout=setTimeout(ajaxTimeout,30000);
+		var xmlHttpTimeout=setTimeout(ajaxTimeout,60000);
 		function ajaxTimeout(){
 		   xmlhttp.abort();
 		   closeLoadBar();
