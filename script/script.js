@@ -328,7 +328,7 @@ function getFilledData(){
   //-------------------------Uncategorized----------------------------  
   data.discontinued=getE('selDiscontinued').value;data.parentName=getE('tbParentName').value;data.officeAndAddress=getE('txOfficeAndAddress').value;
   data.govtDeptt=getE('tbGovtDeptt').value;data.postHeld=getE('tbPostHeld').value;data.sinceDate=getE('tbSinceDate').value;
-  for(var key in data){data[key]=form(data[key];)
+  for(var key in data){data[key]=form(data[key]);}
   return data;
 }
 function callSaveFilledData(){
