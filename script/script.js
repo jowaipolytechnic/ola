@@ -48,8 +48,8 @@ function xhr(mode,payload){
 		      doProcess(xmlhttp.responseText);
 		    }
 		}
-		var jsn=payload;//formJSON(payload);
-		var pLoad=JSON.stringify(jsn);
+		//var jsn=payload;//formJSON(payload);
+		var pLoad=JSON.stringify(payload);
 		xmlhttp.open("POST",'https://script.google.com/macros/s/AKfycbzZ-2K0zQJM8BOi1vgckZyxD5nOznBPcE-FUJioaTuGJKKwjog/exec?mode='+mode+'&payload='+pLoad,true);
 		xmlhttp.send();
 		// Timeout to abort in 5 seconds
@@ -62,34 +62,6 @@ function xhr(mode,payload){
 	}
 	catch(e){closeLoadBar();alert(e.message);}
 }
-//----------------------------------------------------------------------------
-function formJSON(obj){
-	var jsn={};
-	for(var key in obj){
-		if(typeof obj[key]==='string'){
-			var s1=obj[key].replace(/&/g,'ampersandChar');
-			var s2=s1.replace(/#/g,'hashChar');
-			var s3=s2.replace(/%/g,'percentageChar');
-			jsn[key]=s3;
-		}
-		else if(typeof obj[key]==='object'){
-			if(obj[key].constructor===Array){
-				var arr=[];
-				for(var i=0;i<obj[key].length;i++){
-					var o=formJSON(obj[key][i]);
-					arr.push(o);
-				}
-				jsn[key]=arr;
-			}
-			else{
-				var o=formJSON(obj[key]);
-				jsn[key]=o;
-			}
-		}
-		else{jsn[key]=obj[key];}
-	}
-	return jsn;
-}
 function formData(data){
 	if(typeof data==='string'){
 		var s1=data.replace(/&/g,'ampersandChar');
@@ -97,7 +69,6 @@ function formData(data){
 		var s3=s2.replace(/%/g,'percentageChar');
 		return s3;
 	}
-	
 }
 function doProcess(data){
   var returnPayload=JSON.parse(data);
@@ -186,7 +157,7 @@ function callRegisterApplicant(){
   if((registerName=='')||(registerPassword=='')||(repsw=='')){registerError('User Name or Password cannot be blank.');return;}
   if(registerPassword != repsw){registerError('Passwords not matching.');return;}
   showLoadBar('Registering...');
-  var payload={'registerName':registerName,'registerPassword':registerPassword};
+  var payload={'registerName':formData(registerName),'registerPassword':formData(registerPassword)};
   xhr('register',payload);
 }
   
@@ -208,7 +179,7 @@ function callLogin(){
   }
   else{
     showLoadBar('Logging.....');
-    var payload={'loginName':un,'loginPassword':pswd};
+    var payload={'loginName':formData(un),'loginPassword':formData(pswd)};
     xhr('login',payload);
   }
 }
@@ -294,7 +265,6 @@ function getFilledData(){
   data.sex=getE('selSex').value;data.dobDay=getE('selDay').value;data.dobMonth=getE('selMonth').value;data.dobYear=getE('selYear').value;
   data.nationality=getE('tbNationality').value;data.religion=getE('tbReligion').value;data.motherTongue=getE('tbMotherTongue').value;
   data.category=getE('selCategory').value;
-  //if(data.category=='K&J'){data.category='KnJ';}
   //--------------Communication Details-------------------------------------
   data.permanentAddress=getE('txPermanentAddress').value;data.communicationAddress=getE('txCommunicationAddress').value;
   data.phone=getE('tbPhoneNumber').value;data.mobile=getE('tbMobileNumber').value;
