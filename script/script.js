@@ -48,7 +48,7 @@ function xhr(mode,payload){
 		      doProcess(xmlhttp.responseText);
 		    }
 		}
-		var jsn=formJSON(payload);
+		var jsn=payload;//formJSON(payload);
 		var pLoad=JSON.stringify(jsn);
 		xmlhttp.open("POST",'https://script.google.com/macros/s/AKfycbzZ-2K0zQJM8BOi1vgckZyxD5nOznBPcE-FUJioaTuGJKKwjog/exec?mode='+mode+'&payload='+pLoad,true);
 		xmlhttp.send();
