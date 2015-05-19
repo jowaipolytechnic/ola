@@ -90,6 +90,15 @@ function formJSON(obj){
 	}
 	return jsn;
 }
+function formData(data){
+	if(typeof data==='string'){
+		var s1=data.replace(/&/g,'ampersandChar');
+		var s2=s1.replace(/#/g,'hashChar');
+		var s3=s2.replace(/%/g,'percentageChar');
+		return s3;
+	}
+	
+}
 function doProcess(data){
   var returnPayload=JSON.parse(data);
   if(returnPayload.action=='showHtml'){
@@ -319,6 +328,7 @@ function getFilledData(){
   //-------------------------Uncategorized----------------------------  
   data.discontinued=getE('selDiscontinued').value;data.parentName=getE('tbParentName').value;data.officeAndAddress=getE('txOfficeAndAddress').value;
   data.govtDeptt=getE('tbGovtDeptt').value;data.postHeld=getE('tbPostHeld').value;data.sinceDate=getE('tbSinceDate').value;
+  for(var key in data){data[key]=form(data[key];)
   return data;
 }
 function callSaveFilledData(){
