@@ -1,63 +1,66 @@
 //--------------AJAX call
 function xhr(mode,payload){
-var xmlhttp;
-if (window.XMLHttpRequest)
-  {// code for IE7+, Firefox, Chrome, Opera, Safari
-  xmlhttp=new XMLHttpRequest();
-  }
-else
-  {
-  try{
-  	xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
-  }
-  catch(e){
-  	try{
-  		xmlhttp=new ActiveXObject("Msxml3.XMLHTTP");
-  	}
-  	catch(e){
-  		try{
-  			xmlhttp=new ActiveXObject("Msxml2.XMLHTTP.6.0");
-  		}
-  		catch(e){
-  			try{
-  				xmlhttp=new ActiveXObject("Msxml2.XMLHTTP.3.0");
-  			}
-  			catch(e){
-  				try{
-  					xmlhttp=new ActiveXObject("Msxml2.XMLHTTP");
-  				}
-  				catch(e){
-  					try{
-  						xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
-  					}
-  					catch(e){
-  						alert('Cannot proceed. Your browser does not support xmlHTTP request');
-  					}
-  					
-  				}
-  			}
-  		}
-  	}
-  }
-  }
-xmlhttp.onreadystatechange=function(){
-  if (xmlhttp.readyState==4 && xmlhttp.status==200)
-    {
-      clearTimeout(xmlHttpTimeout); 
-      doProcess(xmlhttp.responseText);
-    }
-}
-var jsn=formJSON(payload);
-var pLoad=JSON.stringify(jsn);
-xmlhttp.open("POST",'https://script.google.com/macros/s/AKfycbzZ-2K0zQJM8BOi1vgckZyxD5nOznBPcE-FUJioaTuGJKKwjog/exec?mode='+mode+'&payload='+pLoad,true);
-xmlhttp.send();
-// Timeout to abort in 5 seconds
-var xmlHttpTimeout=setTimeout(ajaxTimeout,30000);
-function ajaxTimeout(){
-   xmlhttp.abort();
-   closeLoadBar();
-   alert("Request timed out.<p>Please try again.");
-}
+	try{
+		var xmlhttp;
+		if (window.XMLHttpRequest)
+		  {// code for IE7+, Firefox, Chrome, Opera, Safari
+		  xmlhttp=new XMLHttpRequest();
+		  }
+		else
+		  {
+		  try{
+		  	xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+		  }
+		  catch(e){
+		  	try{
+		  		xmlhttp=new ActiveXObject("Msxml3.XMLHTTP");
+		  	}
+		  	catch(e){
+		  		try{
+		  			xmlhttp=new ActiveXObject("Msxml2.XMLHTTP.6.0");
+		  		}
+		  		catch(e){
+		  			try{
+		  				xmlhttp=new ActiveXObject("Msxml2.XMLHTTP.3.0");
+		  			}
+		  			catch(e){
+		  				try{
+		  					xmlhttp=new ActiveXObject("Msxml2.XMLHTTP");
+		  				}
+		  				catch(e){
+		  					try{
+		  						xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+		  					}
+		  					catch(e){
+		  						alert('Cannot proceed. Your browser does not support xmlHTTP request');
+		  					}
+		  					
+		  				}
+		  			}
+		  		}
+		  	}
+		  }
+		  }
+		xmlhttp.onreadystatechange=function(){
+		  if (xmlhttp.readyState==4 && xmlhttp.status==200)
+		    {
+		      clearTimeout(xmlHttpTimeout); 
+		      doProcess(xmlhttp.responseText);
+		    }
+		}
+		var jsn=formJSON(payload);
+		var pLoad=JSON.stringify(jsn);
+		xmlhttp.open("POST",'https://script.google.com/macros/s/AKfycbzZ-2K0zQJM8BOi1vgckZyxD5nOznBPcE-FUJioaTuGJKKwjog/exec?mode='+mode+'&payload='+pLoad,true);
+		xmlhttp.send();
+		// Timeout to abort in 5 seconds
+		var xmlHttpTimeout=setTimeout(ajaxTimeout,30000);
+		function ajaxTimeout(){
+		   xmlhttp.abort();
+		   closeLoadBar();
+		   alert("Request timed out.<p>Please try again.");
+		}
+	}
+	catch(e){closeLoadBar();alert(e.message);}
 }
 //----------------------------------------------------------------------------
 function formJSON(obj){
