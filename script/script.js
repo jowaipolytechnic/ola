@@ -50,6 +50,13 @@ var jsn=formJSON(payload);
 var pLoad=JSON.stringify(jsn);
 xmlhttp.open("POST",'https://script.google.com/macros/s/AKfycbzZ-2K0zQJM8BOi1vgckZyxD5nOznBPcE-FUJioaTuGJKKwjog/exec?mode='+mode+'&payload='+pLoad,true);
 xmlhttp.send();
+// Timeout to abort in 5 seconds
+var xmlHttpTimeout=setTimeout(ajaxTimeout,1000);
+function ajaxTimeout(){
+   xmlHttp.abort();
+   closeLoadBar();
+   alert("Request timed out.<p>Please try again.");
+}
 }
 //----------------------------------------------------------------------------
 function formJSON(obj){
