@@ -50,7 +50,7 @@ function xhr(mode,payload){
 		}
 		//var jsn=payload;//formJSON(payload);
 		var pLoad=JSON.stringify(payload);
-		xmlhttp.open("POST",'https://script.google.com/macros/s/AKfycbzZ-2K0zQJM8BOi1vgckZyxD5nOznBPcE-FUJioaTuGJKKwjog/exec?mode='+mode+'&payload='+pLoad,true);
+		xmlhttp.open("POST",'https://script.google.com/macros/s/AKfycbyQ-8t4vfPH8lrrHUP_T3ohPEEEzhtxw0L1F-kTBYl5zcrmbQVU/exec?mode='+mode+'&payload='+pLoad,true);
 		xmlhttp.send();
 		// Timeout to abort in 5 seconds
 		var xmlHttpTimeout=setTimeout(ajaxTimeout,60000);
