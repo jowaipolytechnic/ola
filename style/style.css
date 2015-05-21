@@ -42,7 +42,6 @@ body{
 	font-size:2em;
 	padding: 0.5em
 }
-
 .header ul{
     margin-bottom: -0.09em;
 }
@@ -157,8 +156,7 @@ table textarea
   width: 60%;height:40%;
   background-color:rgb(223, 186, 131);    
   border: #ffe4b5 ridge;
-}
-.hidden{
+}.hidden{
   display:none;
 }
 #jpLoadBarTextV1{
@@ -167,7 +165,6 @@ table textarea
   font-size:50px;
   line-height:200px;
 }
-
 .MessageBox{
 	display:block;
 	position:absolute;
@@ -178,8 +175,6 @@ table textarea
 	border: #DCE5C6 ridge;
 	overflow:hidden;
 }
-
-
 .MessageTitle{
 	position:static;
 	height:60px;
@@ -191,8 +186,6 @@ table textarea
 	padding-top:15px;
 	padding-left:15px;
 }
-
-
 .MessageBody{
 	position:static;
 	min-height:75px;
@@ -201,14 +194,10 @@ table textarea
 	padding-top:20px;
 	padding-left:20px;
 }
-
-
 .MessageFooter{
 	height:50px;
 	padding-right:5px;
 }
-
-
 .MessageFooter input{
 	height:40px;
 	width:100px;
@@ -219,14 +208,11 @@ table textarea
 	background-color:#427A2F;
     margin-left:1em;
 }
-
-
 .MessageFooter input:hover{
 	color:#000;
 	background-color:#A9CF8B;
 }
-/*------------------*/
-@media screen and (min-width:320px) { /* smartphones, portrait iPhone, portrait 480x320 phones (Android) */
+@media screen and (min-width:320px) {
 	.container{
     	margin-left:5%;
 		margin-right:5%;
@@ -234,27 +220,21 @@ table textarea
 		margin-top: 0.5em;
 	}  
 }
-@media screen and (min-width:480px) { /* smartphones, Android phones, landscape iPhone */
- }
-@media screen and (min-width:600px) { /* portrait tablets, portrait iPad, e-readers (Nook/Kindle), landscape 800x480 phones (Android) */
-}
-@media screen and (min-width:801px) { /* tablet, landscape iPad, lo-res laptops ands desktops */ 
+@media screen and (min-width:801px) {
 	.container{
     	margin-left:10%;
 		margin-right:10%;
         width:80%;
 		margin-top: 1em;
 	}
-	
 	.tableCell{display:table-cell}
 }
-@media screen and (min-width:1025px) { /* big landscape tablets, laptops, and desktops */ 
+@media screen and (min-width:1025px) {
 	.container{
     	margin-left:15%;
 		margin-right:15%;
         width:70%;
 		margin-top: 2em;
 	}
-}
-@media screen and (min-width:1281px) { /* hi-res laptops and desktops */ 
+	.tableCell{display:table-cell}
 }
