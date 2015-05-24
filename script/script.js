@@ -172,15 +172,15 @@ function registerError(msg){
 var un='';
 var pswd='';
 function callLogin(){
-  un=getE('userName').value;
-  pswd=getE('password').value;
+  un=formData(getE('userName').value);
+  pswd=formData(getE('password').value);
   //Check if user name or password is blank
   if((un=='') || (pswd=='')){
     getE('loginMessage').innerHTML='User name or password cannot be blank.';      
   }
   else{
     showLoadBar('Logging.....');
-    var payload={'loginName':formData(un),'loginPassword':formData(pswd)};
+    var payload={'loginName':un,'loginPassword':pswd};
     xhr('login',payload);
   }
 }
