@@ -32,7 +32,9 @@ function xhr(mode,payload){
 		  						xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
 		  					}
 		  					catch(e){
-		  						alert('Cannot proceed. Your browser does not support xmlHTTP request');
+		  						closeLoadBar();
+		  						alert('Your browser does not have the required functionalities.<p>Please switch to a newer browser.');
+		  						return;
 		  					}
 		  					
 		  				}
@@ -60,7 +62,7 @@ function xhr(mode,payload){
 		   alert("Request timed out.<p>Please try again.");
 		}
 	}
-	catch(e){closeLoadBar();alert(e.message);}
+	catch(e){closeLoadBar();alert('Browser Error.<p>Please switch to a newer browser.');}
 }
 function formData(data){
 	if(typeof data==='string'){
