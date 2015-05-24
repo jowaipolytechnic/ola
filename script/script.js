@@ -50,16 +50,15 @@ function xhr(mode,payload){
 		      doProcess(xmlhttp.responseText);
 		    }
 		}
-		//var jsn=payload;//formJSON(payload);
 		var pLoad=JSON.stringify(payload);
 		xmlhttp.open("POST",'https://script.google.com/macros/s/AKfycbyQ-8t4vfPH8lrrHUP_T3ohPEEEzhtxw0L1F-kTBYl5zcrmbQVU/exec?mode='+mode+'&payload='+pLoad,true);
 		xmlhttp.send();
-		// Timeout to abort in 5 seconds
+		// Timeout to abort in 2 mins
 		var xmlHttpTimeout=setTimeout(ajaxTimeout,120000);
 		function ajaxTimeout(){
 		   xmlhttp.abort();
 		   closeLoadBar();
-		   alert("Request timed out.<p>Please try again.");
+		   alert("Request timed out.<p>Check Internet Connection and try again.<p>If problem persist, switch to a newer browser.");
 		}
 	}
 	catch(e){closeLoadBar();alert('Browser Error.<p>Please switch to a newer browser.');}
