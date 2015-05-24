@@ -33,7 +33,7 @@ function xhr(mode,payload){
 		  					}
 		  					catch(e){
 		  						closeLoadBar();
-		  						alert('Your browser does not have the required functionalities.<p>Please switch to a newer browser.');
+		  						alert('Your browser does not have the required functionalities.<br>Please switch to a newer browser.');
 		  						return;
 		  					}
 		  					
@@ -58,10 +58,10 @@ function xhr(mode,payload){
 		function ajaxTimeout(){
 		   xmlhttp.abort();
 		   closeLoadBar();
-		   alert("Request timed out.<p>Check Internet Connection and try again.<p>If problem persist, switch to a newer browser.");
+		   alert("Request timed out.<br>Check Internet Connection and try again.<br>If problem persist, switch to a newer browser.");
 		}
 	}
-	catch(e){closeLoadBar();alert('Browser Error.<p>Please switch to a newer browser.');}
+	catch(e){closeLoadBar();alert('Browser Error.<br>Please switch to a newer browser.');}
 }
 function formData(data){
 	if(typeof data==='string'){
